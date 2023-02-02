@@ -27,7 +27,9 @@ isNaN(0) // false
 isNaN('사과') // true
 
 // eval() - 따옴표 안에 있는 문자 혹은 숫자를 따옴표가 없는 것처럼 인식하게 만드는 함수입니다. 권장하지 않습니다. 
-// 보안 문제가 있고, 검색엔진은 eval()함수 자체가 나쁜일에 워낙 많이 쓰이기 때문에(hijacking) 검색품질 저하, 개발자가 디버깅할 때도 어렵습니다  
+// 보안 문제가 있고,
+// 검색엔진은 eval()함수 자체가 
+// 나쁜일에 워낙 많이 쓰이기 때문에(hijacking) 검색품질 저하, 개발자가 디버깅할 때도 어렵습니다  
 eval('5+5')  // 10
 eval('alert("hello world")')  // hello world라는 알림창이 뜸
 
@@ -220,9 +222,10 @@ var b = 3;
 console.log(a); // 3
 console.log(b); // 1
 
+// durian과 egg의 순서를 바꿔보세요
 var array = ['banana', 'carrot', 'egg', 'durian']
 array = [array[0], array[1], array[3], array[2]]
-// durian과 egg의 순서를 바꿔보세요
+
 let [a, b, c] = "abc"; // ["a", "b", "c"]
 let [one, two, three] = new Set([1, 2, 3]);
 let user = {};
