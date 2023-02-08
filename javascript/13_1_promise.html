@@ -1,0 +1,25 @@
+<div id="demo"></div>
+
+<button onclick="loadDoc()">비동기</button>
+
+<script>
+
+    //버튼 클릭시 실행되면서 서버에 요청 및 응답 받아와서 화면에 출력
+    function loadDoc() {
+        return new Promise((resolve, reject) => {
+            fetch('./ajax_response.json') // 파일명이 달라지면 catch로 넘어갑니다
+            .then((response) => { 
+                return response.json()
+                }).then((data)=> {
+                    document.getElementById("demo").innerHTML = `이름: ${data.name}`
+                    // console.log(data)
+                }).catch(
+                    document.getElementById("demo").innerHTML = `파일이 없습니다(서버에 문제가 있습니다)`
+                ).finally(
+                    console.log('성공했든 실패했든 작업 완료')
+                )
+         })
+
+   }
+
+</script>

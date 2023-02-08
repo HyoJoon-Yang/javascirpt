@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"></div>
+
+<button onclick="loadDoc()">비동기</button>
+<!-- <button onclick="nameOn()">비동기</button> -->
+
+<script>
+    //Async - Await (Promise를 감싸는 것일 뿐이므로 호환 가능) : 버튼 클릭시 실행되면서 서버에 요청 및 응답 받아와서 화면에 출력
+
+    // 동작 단위로 함수를 관리할 수 있습니다
+    function readFile(){
+        return fetch('./ajax_response1.json')
+        .then((response) => { 
+        return response.json()
+        }
+    )}
+
+
+    // await는 async 함수 안에서만 동작합니다.
+    // Promise와 달리 try - catch로 에러를 잡습니다
+    async function loadDoc() {
+        try {
+            var datas = await readFile() // 이름: 신짱구 - readFile이 완료된 후 datas를 사용했으므로
+            // var datas = readFile() // 이름: undefined -> readFile이 완료되기 전에 datas를 사용했으므로
+            // console.log(typeof datas) 
+            document.getElementById("demo").innerHTML = `이름: ${datas.name}`
+        } catch {
+            document.getElementById("demo").innerHTML = `파일이 없습니다(서버에 문제가 있습니다)`
+        } finally { 
+            console.log('성공했든 실패했든 작업 완료')
+        }
+    }
+
+</script>
+</body>
+</html>

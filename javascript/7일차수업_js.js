@@ -432,3 +432,63 @@ alert(today); // 날짜는 변경되지 않고 시만 0으로 변경됩니다.
 
 today.setHours(0, 0, 0, 0);
 alert(today); // 날짜는 변경되지 않고 시, 분, 초가 모두 변경됩니다(00시 00분 00초).
+
+
+
+/* 0. 조건: 등급은 일반회원, 프렌즈, 퍼플(Plain, Friends, Purple) + 개인정보는 이름만 받습니다. 이외 3개 클래스를 구현하는데 필요한 속성, 함수를 직접 논의하고 구현해보세요
+*/
+
+class Product{
+    // 상품명, 재고(몇개 들여오는지), 가격 
+    constructor(productName, productQuantity, productPrice){
+      this.productName = productName;
+      this.productQuantity = productQuantity;
+      this.productPrice = productPrice;
+    }
+  }
+  var 새우깡 = new Product('새우깡', 3, 1500)
+  
+  var 바나나킥 = '바나나킥은 페이크지롱'
+  // 이름(userName), 적립률(pointRate) -> 적립금(point) -> 구매금액(boughtPrice)
+  // 상품명(productName, 수량(productCount)
+  // buy(상품명, 수량)  
+  class Plain {
+      static discountRate = 0.005;
+      constructor(name) {
+        this.name = name;
+        this.discountRate = Plain.discountRate;
+        this.boughtPrice = 0;
+        this.point = 0;
+      }
+    buy(productName, productCount) {
+      // 이 객체가 Product 클래스로 만들어진 인스턴스인가
+      if (productName instanceof Product) {
+        // 지금 창고에 내가 사려는만큼 남아있는가
+        if productName.productQuantity >= productCount) {      
+            // 남아있으면 구매
+            return '구매가 가능합니다'
+            } else {
+            // 남아있지 않으면 '품절입니다'
+            return '품절입니다'
+            }
+        } else {
+            return ('바코드가 읽히지 않습니다')
+        }
+     // 바코드가 읽히지 않습니다
+      
+    }
+  }
+  /* 1. 일련번호, 상품명, 수량, 가격을 속성으로 가지는 Product 클래스를 구현해보세요. (일련번호는 자동 입력됨)
+  ```
+  새우깡 = new Product('새우깡', 3, 1500)
+  ```
+  
+  2. 마켓컬리의 회원등급 목록을 참조하셔서 class Plain, Friends, Purple을 구현해보세요.
+      - Plain 클래스에는 buy(상품명, 수량)이라는 인스턴스 메소드가 있으며,
+      - 이 메소드는 자료형이 Product(instanceof)인 상품은 구매할 수 있고, // 지구를지켜라 instanceof Movie; (인스턴스명 instanceof 클래스명;)
+      - 자료형이 Product가 아닌 상품은 '바코드를 읽을 수 없습니다.'라는 에러메시지를 리턴합니다.
+  
+  3. Product와 회원 클래스를 이용하여 만들 수 있는 또다른 메소드를 하나 고안해 보세요.
+  */
+  
+  var kim = new Plain('김연지')
